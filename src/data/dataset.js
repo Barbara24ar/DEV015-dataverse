@@ -206,7 +206,7 @@ export default [
     "name": "Nancy",
     "shortDescription": "Cutie Nancy is looking for her new home, having ended up in Teckels care through no fault of her own.",
     "description": "Nancy has lived in a home before and is desperate to get back to her home comforts. She would like to live in an adult-only home with no other pets as she can be a worrier. Nancy will also need a private, fully enclosed garden to play in and ideally live away from busy roads to ensure her safety and peace of mind. Returning to a familiar environment will help her thrive and regain her confidence and happiness quickly. Love.",
-    "imageUrl": "https://24petconnect.com/image/A1325336/LSVG/3",
+    "imageUrl": "https://blog.terranea.es/wp-content/uploads/2022/03/mestizo.jpg",
     "facts": {
       "pet": "Dog",
       "gender": "Female",

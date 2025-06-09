@@ -13,12 +13,12 @@
 
 <body>
   <header>
+  <div class="main-inner">
     <label for="toggler" class="fas fa-bars"></label>
     <input type="checkbox" name="" id="toggler">
     <a href="#"><img src="img/Logo (1).png" alt="Logo" class="logo"></a>
     <nav class="navbar">
       <a href="#filterSelect">Filter</a>
-      <a href="#stadistics">Statistics</a>
       <a href="#animals">About us</a>
       <a href="#donate">Donate</a>
       <a href="#contact">Contact us</a>
@@ -28,25 +28,31 @@
       <a href="#" class="fas fa-heart"></a>
       <a href="#" class="fas fa-user"></a>
     </div>
-  </header>
+    </div>
+</header>
 
-  <section class="home" id="home">
+  <section class="home">
+  <div class="main-inner" id="home">
     <div class="content">
-      <h3>Adopt a pet</h3>
-      <h3><span>A loyal friend awaits you</span></h3>
-      <h2>
-        <p>Give a loving home to a pet in need. Experience the joy and unconditional love that only a rescued pet can
+      <h3>Adopt your forever best friend</h3>
+      <p>Give a loving home to a pet in need. Experience the joy and unconditional love that only a rescued pet can
           offer.</p>
-      </h2>
       <a href="#" class="btn">Learn more</a>
     </div>
+  </div>
   </section>
 
-  <h1 class="heading" id="filterSelect"> Our Animals </h1>
+  <div class="adoption-stats-section">
+    <div class="adoption-stats-header">
+      <span class="trophy">🏆</span>
+      <span class="adoption-title">Adoption Statistics</span>
+    </div>
+    <div id="adoption-stats"></div>
+  </div>
   <main>
-    <div class="filter-container">
+    <div class="filter-container" id="filterSelect">
       <h2 class="handle">
-        <span class="label-style">I want to see:</span>
+        <span class="label-style">I Want To See:</span>
       </h2>
       <div class="content">
         <label for="filter-select"></label>
@@ -85,46 +91,9 @@
   </main>
 
   <div id="root" class="picture"></div>
-
-  <h1 class="heading" id="stadistics"> Our Statistics</h1>
-  <div class="contenedorStadisticas">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', { 'packages': ['corechart'] });
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Dog', 50.50],
-          ['Cat', 50.50],
-          ['Male', 45.83],
-          ['Female', 54.17],
-          ['Small', 3.36],
-          ['Big', 2.4],
-        ]);
-
-        var options = {
-          width: 800,
-          height: 600,
-          pieSliceText: 'percentage',
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="chart_wrap">
-      <div id="piechart"></div>
-    </div>
-    <div id="results"></div>
-    <button id="compute-stats-btn">stadistics</button>
-  </div>
-
-
-
-  <section class="our" id="animals">
-    <h1 class="heading">About Us</h1>
+  
+  <section class="our">
+  <div class="main-inner" id="animals">
     <div class="row">
       <div class="video-contain">
         <video src="img/volunteer.mp4" loop autoplay muted></video>
@@ -138,67 +107,200 @@
         <a href="#" class="btn">Learn more</a>
       </div>
     </div>
-  </section>
-  <section>
-    <h1 class="heading" id="donate"> Help Our Animals </h1>
-    <div class="container-help-our-animals">
-      <div class="content-help-our-animals">
-        <p> Your generosity is vital in providing our animals with the necessary food, veterinary care, and support they
-          need to live a happy and healthy life.</p>
-        <p> Through your donation, we are able to offer a safe haven to the most vulnerable dogs and cats, including
-          those who have experienced mistreatment, neglect, abandonment, or are simply unwanted.</p>
-        <p> 🐾 We care for up to 100 animals every day and re-home around 250 animals a year</p>
-        <p> 🐾 We rescue over 160 animals per year, those who we can’t reunite, we re-home.</p>
-        <p> 🐾 Our Sanctuary provides a refuge for hundreds of vulnerable dogs and cats who have been mistreated,
-          neglected, abandoned or are unwanted.</p>
-        <p> 🐾 We never put a healthy animal down</p>
-        <p> 🐾 We never turn away animals in need, as long as we have the capacity and resources to meet their specific
-          needs</p>
-        <p> 🐾 We’re dedicated to finding forever homes!</p>
+    </div>
+</section>
+  <section class="help-section" id="donate">
+    <div class="help-content">
+      <div class="help-header">
+        <span class="help-icon">💜</span>
+        <h2>Help Our Animals</h2>
       </div>
-      <div class="donation-box">
-        <span>Donate to</span>
-        <div class="logo">
-          <img src="img/Logo (1).png" alt="Pet Finder">
+      <div class="help-description">
+        <p class="help-intro">
+          Your support creates real change: every donation helps save lives and bring hope to animals in need. 💜
+        </p>
+        <p>
+          Your generosity is vital in providing our animals with the necessary food, veterinary care, and support they need to live a happy and healthy life.
+        </p>
+        <p>
+          Through your donation, we are able to offer a safe haven to the most vulnerable dogs and cats, including those who have experienced mistreatment, neglect, abandonment, or are simply unwanted.
+        </p>
+      </div>
+      <div class="help-stats">
+        <div class="help-stat">
+          <span class="help-stat-number">100</span>
+          <span class="help-stat-text">animals cared for daily</span>
         </div>
-        <div class="amount">
-          <label for="donation-amount"></label>
-          <input type="number" value="0" min="0" step="1" id="donation-amount">
-          <span class="currency">USD</span>
+        <div class="help-stat">
+          <span class="help-stat-number">250</span>
+          <span class="help-stat-text">animals re-homed yearly</span>
         </div>
-        <div class="checkbox-container">
-          <label for="monthly-donation">
-            <input type="checkbox" id="monthly-donation">
-            <span class="make">Make it a monthly donation</span>
-          </label>
+        <div class="help-stat">
+          <span class="help-stat-number">160+</span>
+          <span class="help-stat-text">animals rescued per year</span>
         </div>
-        <button class="paypal-button">
-          <img
-            src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1447476896/lcrdrlh1hfa0nbl9ycy3.png"
-            alt="PayPal Logo" class="paypal-logo">
-          Donate with PayPal
-        </button>
-        <button class="card-button">Donate with credit or debit card</button>
+      </div>
+      <div class="help-mission">
+        <ul class="mission-list">
+          <li>🏠 Our Sanctuary provides a refuge for hundreds of vulnerable dogs and cats</li>
+          <li>❤️ We never put a healthy animal down</li>
+          <li>🚪 We never turn away animals in need, as long as we have capacity</li>
+          <li>🏡 We're dedicated to finding forever homes!</li>
+        </ul>
+      </div>
+      <div class="donation-section">
+        <h3>Make a Difference Today</h3>
+        <p>Choose how you'd like to help our animals:</p>
+        <div class="donation-buttons">
+          <div class="donation-option">
+            <h4>One-Time Donation</h4>
+            <p>Make a single donation to help animals in need right now</p>
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+              <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID" />
+              <input type="hidden" name="currency_code" value="USD" />
+              <button type="submit" class="paypal-button">
+                <span class="paypal-logo">PayPal</span>Donate Now
+              </button>
+            </form>
+          </div>
+          <div class="donation-option">
+            <h4>Monthly Support</h4>
+            <p>Become a monthly supporter and help us plan for the future</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input type="hidden" name="hosted_button_id" value="YOUR_MONTHLY_BUTTON_ID" />
+              <button type="submit" class="paypal-button monthly">
+                <span class="paypal-logo">PayPal</span>Monthly Support
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="donation-amounts">
+          <p class="amounts-text">Suggested amounts:</p>
+          <div class="amount-buttons">
+            <button class="amount-btn" onclick="donateAmount(10)">$10</button>
+            <button class="amount-btn" onclick="donateAmount(25)">$25</button>
+            <button class="amount-btn" onclick="donateAmount(50)">$50</button>
+            <button class="amount-btn" onclick="donateAmount(100)">$100</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="contact" id="contact">
-    <h1 class="heading">Contact Us </h1>
-    <div class="row">
-      <form action="">
-        <input type="text" placeholder="name" class="box">
-        <input type="email" placeholder="email" class="box">
-        <input type="number" placeholder="number" class="box">
-        <textarea name="" class="box" placeholder="message" cols="30" rows="10"></textarea>
-        <input type="submit" value="send message" class="btn">
-      </form>
-      <div class="image">
-        <img src="img/send.png" alt="">
+              </div>
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results" style="display: none;">
+          <div class="no-results-icon">🐕</div>
+          <h3>No encontramos perritos con esos criterios</h3>
+          <p>Intenta ajustar tus filtros para ver más opciones</p>
+          <button class="show-all-button" onclick="clearFilters()">Ver todos los perritos</button>
       </div>
-    </div>
-  </section>
 
+      <!-- Contact Form Section -->
+      <section class="contact-section" id="contact">
+          <div class="contact-container">
+              <div class="contact-content">
+                  <div class="contact-form-wrapper">
+                      <h2 class="contact-title">
+                          <span class="contact-icon">📧</span>
+                          Contact Us
+                      </h2>
+                      <p class="contact-description">
+                        Do you have questions about adoption or want to learn more about our pups? 
+                        We’re here to help!
+                      </p>
+                      
+                      <form class="contact-form" id="contact-form">
+                          <div class="form-group">
+                              <label for="name" class="form-label">Your full name</label>
+                              <input 
+                                  type="text" 
+                                  id="name" 
+                                  name="name" 
+                                  class="form-input" 
+                                  placeholder="Your full name"
+                                  required
+                              >
+                          </div>
+                          
+                          <div class="form-group">
+                              <label for="email" class="form-label">Your email address</label>
+                              <input 
+                                  type="email" 
+                                  id="email" 
+                                  name="email" 
+                                  class="form-input" 
+                                  placeholder="your.email@example.com"
+                                  required
+                              >
+                          </div>
+                          
+                          <div class="form-group">
+                              <label for="phone" class="form-label">Your phone number</label>
+                              <input 
+                                  type="tel" 
+                                  id="phone" 
+                                  name="phone" 
+                                  class="form-input" 
+                                  placeholder="(55) 1234-5678"
+                                  required
+                              >
+                          </div>
+                          
+                          <div class="form-group">
+                              <label for="message" class="form-label">Your message</label>
+                              <textarea 
+                                  id="message" 
+                                  name="message" 
+                                  class="form-textarea" 
+                                  placeholder="Tell us about your interest in adopting, questions about a specific dog, or any other inquiry..."
+                                  rows="5"
+                                  required
+                              ></textarea>
+                          </div>
+                          
+                          <button type="submit" class="contact-submit-btn">
+                              <span class="send-icon">📤</span>
+                              Send Message
+                          </button>
+                      </form>
+                  </div>
+                  
+                  <div class="contact-image-wrapper">
+                      <img 
+                          src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                          alt="Voluntario cuidando perros en el refugio" 
+                          class="contact-image"
+                      >
+                      <div class="contact-info-overlay">
+                          <div class="contact-info">
+                              <h3>Info a contact</h3>
+                              <div class="contact-detail">
+                                  <span class="contact-detail-icon">📍</span>
+                                  <span>Av. Esperanza 123, ARG</span>
+                              </div>
+                              <div class="contact-detail">
+                                  <span class="contact-detail-icon">📞</span>
+                                  <span>(54) 1234-5678</span>
+                              </div>
+                              <div class="contact-detail">
+                                  <span class="contact-detail-icon">📧</span>
+                                  <span>adoptions@petfinder.org</span>
+                              </div>
+                              <div class="contact-detail">
+                                  <span class="contact-detail-icon">🕒</span>
+                                  <span>Lun-Vie: 10:00-18:00</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- footer -->
   <section class="footer-top">
+  <div class="main-inner">
     <div class="footer-column">
       <div class="box">
         <h3>Quick Links</h3>
@@ -237,8 +339,9 @@
       </div>
     </div>
     <footer>
-      <div class="highlight">Created By <span>Bárbara y Yesenia</span> | All Rights Reserved</div>
+      <div class="highlight">© 2025 Pet Finder. Created By <span>Bárbara</span> | All Rights Reserved</div>
     </footer>
+  </div>
   </section>
   <script src="main.js" type="module"></script>
 </body>

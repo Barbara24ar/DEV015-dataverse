@@ -1,24 +1,80 @@
 import { filterData, sortData } from "./dataFunctions.js";
 import { renderItems } from "./view.js";
-import { computeStats } from './dataFunctions.js';
-//import { fakeData } from './data.js';
 
 import data from "./data/dataset.js";
-//import { testData } from "../test/data.js";
 
-const showData = renderItems(data); //cambiar a renderItems
-const root = document.querySelector("#root"); // Reemplazado getElementById con querySelector
-// const piechart = document.querySelector("#piechart"); // Reemplazado getElementById con querySelector
-const results = document.querySelector("#results"); // Reemplazado getElementById con querySelector
+// Render Adoption Stats Cards
+function renderAdoptionStats(data) {
+  // Perritos disponibles
+  const dogs = data.filter(item => item.facts.pet === 'Dog');
+  const total = data.length; // Total de animales (perros + gatos)
+
+  // Todos vacunados (sobre todos los animales)
+  const vaccinated = total; // Todos los animales están vacunados
+
+  // Género: ¿hay más hembras que machos? (sobre todos los animales)
+  const females = data.filter(item => item.facts.gender === 'Female').length;
+  const males = data.filter(item => item.facts.gender === 'Male').length;
+  let genderMsg = '';
+  if (females > males) {
+    genderMsg = `There are more females (${females}) than males (${males})`;
+  } else if (males > females) {
+    genderMsg = `There are more males (${males}) than females (${females})`;
+  } else {
+    genderMsg = `There are the same number of females (${females}) and males (${males})`;
+  }  
+
+  // Más pequeños o grandes (petSize) sobre todos los animales
+  const small = data.filter(item => item.facts.petSize === 'Small').length;
+  const big = data.filter(item => item.facts.petSize === 'Big').length;
+  let sizeMsg = '';
+  if (small > big) {
+    sizeMsg = `There are more small pets (${small}) than large ones (${big})`;
+  } else if (big > small) {
+    sizeMsg = `There are more large pets (${big}) than small ones (${small})`;
+  } else {
+    sizeMsg = `There are the same number of small (${small}) and large pets (${big})`;
+  }
+  
+
+  document.getElementById('adoption-stats').innerHTML = `
+    <div class="adoption-stats-cards">
+      <div class="adoption-stat-card available">
+        <div class="stat-value">${total}</div>
+        <div class="stat-label">Available animals</div>
+      </div>
+      <div class="adoption-stat-card avg-age">
+        <div class="stat-value">${females > males ? females : males}</div>
+        <div class="stat-label">${genderMsg}</div>
+      </div>
+      <div class="adoption-stat-card breed">
+        <div class="stat-value">${small > big ? small : big}</div>
+        <div class="stat-label">${sizeMsg}</div>
+      </div>
+      <div class="adoption-stat-card vaccinated">
+        <div class="stat-value">${vaccinated}/${total}</div>
+        <div class="stat-label">vaccinated</div>
+      </div>
+    </div>
+  `;
+}
+
+
+// Llama a la función al cargar la página
+renderAdoptionStats(data);
+
+const showData = renderItems(data); 
+const root = document.querySelector("#root"); 
+const results = document.querySelector("#results"); 
 root.appendChild(showData);
 
-let filteredData = data; // Duplico la data inicial
+let filteredData = data; 
 
-const filterType = document.querySelector("#filter-select"); // Reemplazado getElementById con querySelector
+const filterType = document.querySelector("#filter-select"); 
 filterType.addEventListener("change", function (event) {
   root.innerHTML = "";
 
-  filteredData = filterData(data, "pet", event.target.value); // Filtro por tipo de mascota
+  filteredData = filterData(data, "pet", event.target.value); 
 
   if (filterGender.value) {
     filteredData = filterData(filteredData, "gender", filterGender.value);
@@ -48,7 +104,7 @@ filterGender.addEventListener("change", function (event) {
   root.appendChild(renderItems(filteredData));
 });
 
-const filterSize = document.querySelector("#size-select"); // Reemplazado getElementById con querySelector
+const filterSize = document.querySelector("#size-select"); 
 filterSize.addEventListener("change", function (event) {
   root.innerHTML = "";
 
@@ -65,7 +121,7 @@ filterSize.addEventListener("change", function (event) {
   root.appendChild(renderItems(filteredData));
 });
 
-const sort = document.querySelector("#ordenar"); // Reemplazado getElementById con querySelector
+const sort = document.querySelector("#ordenar"); 
 sort.addEventListener("change", (event) => {
   const sortValue = event.target.value;
   
@@ -78,7 +134,7 @@ sort.addEventListener("change", (event) => {
   root.appendChild(renderItems(orderData));
 });
 
-const clear = document.querySelector("#reset-button"); // Reemplazado getElementById con querySelector
+const clear = document.querySelector("#reset-button"); 
 clear.addEventListener("click", function () {
   filterType.value = "";
   filterGender.value = "";
@@ -87,24 +143,4 @@ clear.addEventListener("click", function () {
 
   root.innerHTML = "";
   root.appendChild(showData);
-});
-
-
-const statistics = document.querySelector("#compute-stats-btn"); // Reemplazado getElementById con querySelector
-statistics.addEventListener("click", function () {
-  const statsDatos = document.createElement('p');
-  const computedStats = computeStats(data);
-  const petCatAvg = computedStats.petCatAvg;
-  const petDogAvg = computedStats.petDogAvg;
-  const genderMaleAvg = computedStats.genderMaleAvg;
-  const genderFemaleAvg = computedStats.genderFemaleAvg;
-  const petSizeSmallAvg = computedStats.petSizeSmallAvg;
-  const petSizeBigAvg = computedStats.petSizeBigAvg;
-  statsDatos.innerHTML = `<p>We have an average of ${petCatAvg}% felines</p>
-                          <p>there is an average of ${petDogAvg}% canines,</p>
-                          <p>of which ${genderMaleAvg}% are males and</p>
-                          <p>${genderFemaleAvg}% are females.</p>
-                          <p>Among them, there are also ${petSizeSmallAvg}% small ones</p>
-                          <p>and ${petSizeBigAvg}% big ones</p>`;
-  results.appendChild(statsDatos);
 });
